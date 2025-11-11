@@ -131,7 +131,7 @@ ul {
 }
 
 .heritage__description {
-  max-width: 780px;
+  max-width: 930px;
   margin: 0 auto;
   font-size: 1rem;
   line-height: 2;
@@ -877,8 +877,8 @@ ul {
 .section > .container {
   position: relative;
   padding-block: clamp(16px, 6vw, 40px);
-  padding-left: clamp(16px, 6vw, 40px);
-  padding-right: clamp(16px, 6vw, 40px);
+  padding-left: clamp(16px, 6vw, 60px);
+  padding-right: clamp(16px, 6vw, 60px);
   background-color: #fff;
 }
 
@@ -1001,6 +1001,8 @@ ul {
   font-size: 1rem;
   letter-spacing: 0.08em;
   color: rgba(26, 36, 56, 0.85);
+  max-width: 930px;
+  margin: 0 auto;
 }
 .mosaic__text--left {
   text-align: left;
@@ -1307,7 +1309,7 @@ ul {
 }
 
 .mosaic__title {
-  margin: 0;
+  margin: 0 auto;
   font-size: 1rem;
   font-weight: 700;
 }
