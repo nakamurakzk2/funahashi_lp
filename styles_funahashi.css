@@ -259,8 +259,12 @@ ul {
 .section--commentary .container {
   background: #f6f1eb;
 }
-.commentary-wrap{
-  margin: 40px;
+.commentary-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 4vw, 40px);
+  padding: clamp(24px, 4vw, 40px);
+  margin: 0 auto;
 }
 
 .commentary {
@@ -306,6 +310,7 @@ ul {
 
 .feature-list {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 18px;
 }
 
@@ -331,6 +336,12 @@ ul {
   font-size: 0.9rem;
   color: #666977;
   text-align: center;
+}
+
+.commentary__visual {
+  display: flex;
+  justify-content: center;
+  padding-top: clamp(16px, 3vw, 24px);
 }
 
 @media (max-width: 768px) {
