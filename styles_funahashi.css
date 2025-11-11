@@ -212,7 +212,7 @@ ul {
 .producer-story__cta-first {
   display: inline-flex;
   gap: 4px;
-  width: 50%;
+  width: 52.5%;
   align-items: center;
   margin-top: 4px;
   font-size: 1rem;
@@ -225,11 +225,7 @@ ul {
 .producer-story__cta:hover {
   opacity: 0.7;
 }
-.producer-story__cta-first {
 
-  width: 100%;
-
-}
 
 @media (max-width: 640px) {
   .heritage__title {
@@ -237,6 +233,9 @@ ul {
   }
   .heritage__title br {
     display: none;
+  }
+  .producer-story__cta-first{
+    width: 100%;
   }
 }
 
@@ -474,9 +473,7 @@ ul {
   padding-top: clamp(16px, 3vw, 24px);
 }
 
-.details__timeline {
-  padding: clamp(12px, 3vw, 20px);
-}
+
 
 .details__timeline h4 {
   margin: 0 0 8px;
