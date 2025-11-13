@@ -211,7 +211,7 @@ ul {
   align-items: center;
   margin-top: 4px;
   font-size: 1rem;
-  color: var(--color-accent);
+  color: #6d5498;
   border-bottom: 1px solid currentColor;
   padding-bottom: 2px;
   transition: opacity var(--transition);
@@ -223,7 +223,7 @@ ul {
   align-items: center;
   margin-top: 4px;
   font-size: 1rem;
-  color: var(--color-accent);
+  color: #6d5498;
   border-bottom: 1px solid currentColor;
   padding-bottom: 2px;
   transition: opacity var(--transition);
@@ -399,7 +399,7 @@ ul {
 }
 
 .details-products__link {
-  color: var(--color-accent);
+  color: #6d5498;
   font-weight: 600;
   text-decoration: underline;
 }
