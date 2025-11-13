@@ -124,4 +124,79 @@
       revealNodes.forEach((node) => node.classList.add('is-visible'));
     }
   }
+
+  const productGalleries = document.querySelectorAll('[data-product-gallery]');
+  if (productGalleries.length) {
+    productGalleries.forEach((gallery) => {
+      const featuredImg = gallery.querySelector('[data-gallery-featured]');
+      const thumbButtons = gallery.querySelectorAll('[data-gallery-thumb]');
+      if (!featuredImg || !thumbButtons.length) return;
+
+      const resetPressed = () => {
+        thumbButtons.forEach((button) => button.setAttribute('aria-pressed', 'false'));
+      };
+
+      let activeTransitionHandler = null;
+      let fallbackTimer = null;
+
+      const startSwapAnimation = (onSwap) => {
+        if (activeTransitionHandler) {
+          featuredImg.removeEventListener('transitionend', activeTransitionHandler);
+          activeTransitionHandler = null;
+        }
+        if (fallbackTimer) {
+          clearTimeout(fallbackTimer);
+          fallbackTimer = null;
+        }
+
+        const completeSwap = () => {
+          if (fallbackTimer) {
+            clearTimeout(fallbackTimer);
+            fallbackTimer = null;
+          }
+          onSwap();
+        };
+
+        const handleTransitionEnd = (event) => {
+          if (event.propertyName !== 'opacity') return;
+          featuredImg.removeEventListener('transitionend', handleTransitionEnd);
+          activeTransitionHandler = null;
+          completeSwap();
+        };
+
+        featuredImg.addEventListener('transitionend', handleTransitionEnd);
+        activeTransitionHandler = handleTransitionEnd;
+
+        featuredImg.classList.remove('is-swapping');
+        void featuredImg.offsetWidth;
+        featuredImg.classList.add('is-swapping');
+
+        fallbackTimer = window.setTimeout(() => {
+          featuredImg.removeEventListener('transitionend', handleTransitionEnd);
+          activeTransitionHandler = null;
+          completeSwap();
+        }, 450);
+      };
+
+      thumbButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          if (button.getAttribute('aria-pressed') === 'true') return;
+          const nextSrc = button.getAttribute('data-src');
+          const nextAlt = button.getAttribute('data-alt') || '';
+          if (!nextSrc) return;
+
+          resetPressed();
+          button.setAttribute('aria-pressed', 'true');
+
+          startSwapAnimation(() => {
+            featuredImg.src = nextSrc;
+            featuredImg.alt = nextAlt;
+            requestAnimationFrame(() => {
+              featuredImg.classList.remove('is-swapping');
+            });
+          });
+        });
+      });
+    });
+  }
 })();
